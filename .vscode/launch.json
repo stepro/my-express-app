@@ -6,12 +6,12 @@
             "type": "node",
             "request": "launch",
             "preLaunchTask": "npm install",
+            "cwd": "${workspaceRoot}",
             "runtimeExecutable": "npm",
             "windows": {
                 "runtimeExecutable": "npm.cmd"
             },
             "runtimeArgs": [ "run", "debug" ],
-            "cwd": "${workspaceRoot}",
             "port": 5858
         }
     ]
