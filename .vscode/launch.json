@@ -13,6 +13,21 @@
             },
             "runtimeArgs": [ "run", "debug" ],
             "port": 5858
+        },
+        {
+            "name": "Node.js launch (Azure)",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [ "run", "azp-debug" ],
+            "timeout": 60000,
+            "port": 5858,
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "/app"
         }
     ]
 }

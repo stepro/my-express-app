@@ -25,6 +25,22 @@
             "suppressTaskName": true,
             "args": [ "start" ],
             "isBackground": true
-        }
+        },
+        {
+            "taskName": "npm run azp watch",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "azp", "watch" ],
+            "isBackground": true
+        },
+        {
+            "taskName": "npm run azp start",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "azp", "start" ],
+            "isBackground": true
+        },
     ]
 }
