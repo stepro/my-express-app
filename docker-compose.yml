@@ -1,0 +1,4 @@
+version: "2"
+services:
+  my-express-app:
+    image: my-express-app

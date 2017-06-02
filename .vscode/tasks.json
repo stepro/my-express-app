@@ -27,8 +27,17 @@
             "isBackground": true
         },
         {
+            "taskName": "npm run docker watch",
+            "dependsOn": "docker down",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "docker", "watch" ],
+            "isBackground": true
+        },
+        {
             "taskName": "npm run docker start",
-            "dependsOn": "docker rm",
+            "dependsOn": "docker down",
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
@@ -36,14 +45,10 @@
             "isBackground": true
         },
         {
-            "taskName": "docker rm",
-            "isShellCommand": true,
-            "command": "docker",
+            "taskName": "docker down",
+            "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "rm", "-f", "my-express-app" ],
-            "osx": {
-                "args": [ "||", "echo", "-n" ]
-            }
+            "args": [ "down" ]
         }
     ]
 }

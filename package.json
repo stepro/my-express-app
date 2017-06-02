@@ -18,11 +18,8 @@
     "watch": "nodemon ./bin/www",
     "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
     "start": "node ./bin/www",
-    "docker-build": "docker build -t my-express-app .",
-    "predocker": "npm run docker-build",
-    "docker": "docker run --name my-express-app -p 3000:3000 -it --rm my-express-app npm run",
-    "predocker-debug": "npm run docker-build",
-    "docker-debug": "docker run --name my-express-app -p 3000:3000 -p 5858:5858 --rm my-express-app node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
-    "docker-rm": "docker rm -f my-express-app"
+    "predocker": "docker-compose build",
+    "docker": "docker-compose run --service-ports --rm my-express-app npm run",
+    "docker-down": "docker-compose down"
   }
 }

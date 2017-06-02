@@ -1,0 +1,9 @@
+version: "2"
+services:
+  my-express-app:
+    build: .
+    ports:
+    - "3000:3000"
+    - "5858:5858"
+    environment:
+      DCSYNC_TARGET: /app

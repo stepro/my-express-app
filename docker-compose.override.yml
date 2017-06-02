@@ -1,0 +1,18 @@
+version: "2"
+services:
+  dcsync:
+    image: stephpr/dcsync
+    volumes:
+    - dcsync:/dcsync
+  my-express-app:
+    extends:
+      file: docker-compose.develop.yml
+      service: my-express-app
+    depends_on:
+    - dcsync
+    volumes:
+    - dcsync:/dcsync:ro
+    - .:/.src
+    entrypoint: /dcsync/exec
+volumes:
+  dcsync:
