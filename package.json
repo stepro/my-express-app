@@ -16,7 +16,7 @@
   },
   "scripts": {
     "watch": "nodemon ./bin/www",
-    "debug": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
+    "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
     "start": "node ./bin/www"
   }
 }
