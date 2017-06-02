@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Node.js launch",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "npm install",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [ "run", "debug" ],
+            "cwd": "${workspaceRoot}",
+            "port": 5858
+        }
+    ]
+}
