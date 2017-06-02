@@ -41,6 +41,6 @@
             "suppressTaskName": true,
             "args": [ "run", "azp", "start" ],
             "isBackground": true
-        },
+        }
     ]
 }
