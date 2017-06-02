@@ -27,19 +27,17 @@
             "isBackground": true
         },
         {
-            "taskName": "npm run azp watch",
-            "isShellCommand": true,
-            "command": "npm",
+            "taskName": "azp up watch",
+            "command": "azp",
             "suppressTaskName": true,
-            "args": [ "run", "azp", "watch" ],
+            "args": [ "up", "npm", "run", "watch" ],
             "isBackground": true
         },
         {
-            "taskName": "npm run azp start",
-            "isShellCommand": true,
-            "command": "npm",
+            "taskName": "azp up",
+            "command": "azp",
             "suppressTaskName": true,
-            "args": [ "run", "azp", "start" ],
+            "args": [ "up" ],
             "isBackground": true
         }
     ]

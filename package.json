@@ -17,9 +17,7 @@
   "scripts": {
     "watch": "nodemon ./bin/www",
     "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
-    "debug-remote": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
-    "start": "node ./bin/www",
-    "azp": "azp up --sync /app npm run",
-    "azp-debug": "azp up -p 5858:5858 --sync /app npm run debug-remote"
+    "remote-debug": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
+    "start": "node ./bin/www"
   }
 }

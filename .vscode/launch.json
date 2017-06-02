@@ -19,11 +19,8 @@
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [ "run", "azp-debug" ],
+            "runtimeExecutable": "azp",
+            "runtimeArgs": [ "up", "-p", "5858:5858", "npm", "run", "remote-debug" ],
             "timeout": 60000,
             "port": 5858,
             "localRoot": "${workspaceRoot}",
