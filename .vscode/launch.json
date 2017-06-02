@@ -24,7 +24,7 @@
             "windows": {
                 "runtimeExecutable": "npm.cmd"
             },
-            "runtimeArgs": [ "run", "docker", "debug" ],
+            "runtimeArgs": [ "run", "docker-debug" ],
             "timeout": 60000,
             "port": 5858,
             "localRoot": "${workspaceRoot}",
