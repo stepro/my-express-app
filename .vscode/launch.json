@@ -13,6 +13,21 @@
             },
             "runtimeArgs": [ "run", "debug" ],
             "port": 5858
+        },
+        {
+            "name": "Node.js launch (Docker)",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "docker rm",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [ "run", "docker-debug" ],
+            "port": 5858,
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "/app"
         }
     ]
 }

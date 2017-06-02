@@ -25,6 +25,21 @@
             "suppressTaskName": true,
             "args": [ "start" ],
             "isBackground": true
+        },
+        {
+            "taskName": "npm run docker start",
+            "dependsOn": "docker rm",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "docker", "start" ],
+            "isBackground": true
+        },
+        {
+            "taskName": "docker rm",
+            "command": "docker",
+            "suppressTaskName": true,
+            "args": [ "rm", "-f", "my-express-app" ]
         }
     ]
 }
