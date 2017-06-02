@@ -17,11 +17,11 @@
   "scripts": {
     "watch": "nodemon ./bin/www",
     "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
+    "debug-remote": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
     "start": "node ./bin/www",
     "predocker": "docker-compose build",
     "docker": "docker-compose run --service-ports --rm my-express-app npm run",
-    "predocker-debug": "docker-compose build",
-    "docker-debug": "docker-compose run --service-ports --rm my-express-app node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
+    "docker-debug": "npm run docker debug-remote",
     "docker-down": "docker-compose down"
   }
 }
