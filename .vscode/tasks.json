@@ -37,9 +37,13 @@
         },
         {
             "taskName": "docker rm",
+            "isShellCommand": true,
             "command": "docker",
             "suppressTaskName": true,
-            "args": [ "rm", "-f", "my-express-app" ]
+            "args": [ "rm", "-f", "my-express-app" ],
+            "osx": {
+                "args": [ "||", "echo", "-n" ]
+            }
         }
     ]
 }
