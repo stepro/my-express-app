@@ -19,11 +19,11 @@
     "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
     "remote-debug": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
     "start": "node ./bin/www",
-    "docker-build": "docker build -t my-express-app .",
-    "predocker": "npm run docker-build",
-    "docker": "docker run --name my-express-app -p 3000:3000 -it --rm my-express-app npm run",
-    "predocker-debug": "npm run docker-build",
-    "docker-debug": "docker run --name my-express-app -p 3000:3000 -p 5858:5858 --rm my-express-app npm run remote-debug",
+    "docker-init": "docker run -v myexpressapp_dcsync:/dcsync --rm stephpr/dcsync",
+    "predocker": "docker build -t my-express-app .",
+    "docker": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -p 3000:3000 -it --rm my-express-app /dcsync/exec npm run",
+    "predocker-debug": "docker build -t my-express-app .",
+    "docker-debug": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -p 3000:3000 -p 5858:5858 --rm my-express-app /dcsync/exec npm run remote-debug",
     "docker-rm": "docker rm -f my-express-app"
   }
 }
