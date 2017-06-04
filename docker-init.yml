@@ -1,0 +1,8 @@
+version: "2"
+volumes:
+  dcsync:
+services:
+  dcsync:
+    image: stephpr/dcsync
+    volumes:
+    - dcsync:/dcsync

@@ -27,7 +27,22 @@
             "isBackground": true
         },
         {
-            "taskName": "npm run docker watch",
+            "taskName": "docker init",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "docker-init" ]
+        },
+        {
+            "taskName": "docker build",
+            "dependsOn": "docker down",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "predocker" ]
+        },
+        {
+            "taskName": "docker run watch",
             "dependsOn": "docker down",
             "isShellCommand": true,
             "command": "npm",
@@ -36,7 +51,7 @@
             "isBackground": true
         },
         {
-            "taskName": "npm run docker start",
+            "taskName": "docker run",
             "dependsOn": "docker down",
             "isShellCommand": true,
             "command": "npm",

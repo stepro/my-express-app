@@ -1,18 +1,18 @@
 version: "2"
-services:
+volumes:
   dcsync:
-    image: stephpr/dcsync
-    volumes:
-    - dcsync:/dcsync
+    external:
+      name: myexpressapp_dcsync
+services:
   my-express-app:
-    extends:
-      file: docker-compose.develop.yml
-      service: my-express-app
-    depends_on:
-    - dcsync
+    build: .
     volumes:
     - dcsync:/dcsync:ro
     - .:/.src
+    ports:
+    - "3000:3000"
+    - "5858:5858"
+    environment:
+      DCSYNC_TARGET: /app
     entrypoint: /dcsync/exec
-volumes:
-  dcsync:
+    command: npm start
