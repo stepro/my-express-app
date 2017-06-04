@@ -34,6 +34,14 @@
             "args": [ "run", "docker-init" ]
         },
         {
+            "taskName": "docker build",
+            "dependsOn": "docker rm",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "predocker" ]
+        },
+        {
             "taskName": "docker run watch",
             "dependsOn": "docker rm",
             "isShellCommand": true,

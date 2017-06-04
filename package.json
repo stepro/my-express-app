@@ -22,7 +22,6 @@
     "docker-init": "docker run -v myexpressapp_dcsync:/dcsync --rm stephpr/dcsync",
     "predocker": "docker build -t my-express-app .",
     "docker": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -v %cd%:/.src -p 3000:3000 -e DCSYNC_TARGET=/app -it --rm my-express-app /dcsync/exec npm run",
-    "predocker-debug": "docker build -t my-express-app .",
     "docker-debug": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -v %cd%:/.src -p 3000:3000 -p 5858:5858 -e DCSYNC_TARGET=/app --rm my-express-app /dcsync/exec npm run remote-debug",
     "docker-rm": "docker rm -f my-express-app"
   }
