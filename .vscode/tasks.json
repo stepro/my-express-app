@@ -27,7 +27,23 @@
             "isBackground": true
         },
         {
-            "taskName": "npm run docker start",
+            "taskName": "docker init",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "docker-init" ]
+        },
+        {
+            "taskName": "docker run watch",
+            "dependsOn": "docker rm",
+            "isShellCommand": true,
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [ "run", "docker", "watch" ],
+            "isBackground": true
+        },
+        {
+            "taskName": "docker run",
             "dependsOn": "docker rm",
             "isShellCommand": true,
             "command": "npm",
