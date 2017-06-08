@@ -38,7 +38,7 @@
         },
         {
             "taskName": "docker workspace commit",
-            "dependsOn": "docker rm",
+            "dependsOn": "docker rmi",
             "command": "docker",
             "suppressTaskName": true,
             "args": [ "commit", "-c", "ENTRYPOINT [\"/sync/exec\"]", "my-express-app_workspace", "my-express-app" ]
@@ -72,6 +72,17 @@
             "command": "docker",
             "suppressTaskName": true,
             "args": [ "rm", "-f", "my-express-app" ],
+            "osx": {
+                "args": [ "||", "true" ]
+            }
+        },
+        {
+            "taskName": "docker rmi",
+            "dependsOn": "docker rm",
+            "isShellCommand": true,
+            "command": "docker",
+            "suppressTaskName": true,
+            "args": [ "rmi", "my-express-app" ],
             "osx": {
                 "args": [ "||", "true" ]
             }
