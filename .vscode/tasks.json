@@ -27,36 +27,32 @@
             "isBackground": true
         },
         {
-            "taskName": "docker init",
-            "isShellCommand": true,
-            "command": "npm",
+            "taskName": "docker begin",
+            "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "run", "docker-init" ]
+            "args": [ "-p", "my-express-app_workspace", "-f", "docker-workspace.yml", "up", "--build", "-d" ]
         },
         {
-            "taskName": "docker build",
+            "taskName": "docker commit",
             "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
+            "command": "docker",
             "suppressTaskName": true,
-            "args": [ "run", "predocker" ]
+            "args": [ "commit", "-c", "ENTRYPOINT [\"/sync/exec\"]", "my-express-app_workspace", "my-express-app" ]
         },
         {
             "taskName": "docker run watch",
-            "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
+            "dependsOn": "docker commit",
+            "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "run", "docker", "watch" ],
+            "args": [ "run", "--service-ports", "--rm", "my-express-app", "npm", "run", "watch" ],
             "isBackground": true
         },
         {
             "taskName": "docker run",
-            "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
+            "dependsOn": "docker commit",
+            "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "run", "docker", "start" ],
+            "args": [ "run", "--service-ports", "--rm", "my-express-app" ],
             "isBackground": true
         },
         {
@@ -64,6 +60,13 @@
             "command": "docker-compose",
             "suppressTaskName": true,
             "args": [ "down" ]
+        },
+        {
+            "taskName": "docker end",
+            "dependsOn": "docker down",
+            "command": "docker-compose",
+            "suppressTaskName": true,
+            "args": [ "-p", "my-express-app_workspace", "-f", "docker-workspace.yml", "down", "-v" ]
         }
     ]
 }

@@ -18,13 +18,10 @@
             "name": "Node.js launch (Docker)",
             "type": "node",
             "request": "launch",
-            "preLaunchTask": "docker build",
+            "preLaunchTask": "docker commit",
             "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [ "run", "docker-debug" ],
+            "runtimeExecutable": "docker-compose",
+            "runtimeArgs": [ "run", "--service-ports", "--rm", "my-express-app", "npm", "run", "remote-debug" ],
             "port": 5858,
             "localRoot": "${workspaceRoot}",
             "remoteRoot": "/app"
