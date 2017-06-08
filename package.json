@@ -26,6 +26,7 @@
     "predocker-run": "docker-compose build",
     "docker-run": "docker-compose run --name my-express-app --service-ports --rm my-express-app",
     "docker-rm": "docker rm -f my-express-app",
+    "docker-rmi": "docker rmi my-express-app",
     "predocker-workspace-down": "docker rm -f my-express-app",
     "docker-workspace-down": "docker-compose -p my-express-app_workspace -f docker-workspace.yml down -v"
   }
