@@ -1,0 +1,48 @@
+#!/bin/bash
+set -e
+
+ME="$0"
+if [ -n "$(which cygpath)" ]; then
+  ME=$(cygpath "$ME")
+fi
+ME=$(which "$ME")
+
+MY_DIR=$(dirname "$ME")
+PROJECT_NAME=$(basename $MY_DIR)
+ACTION=$1
+shift
+
+start() {
+    SERVICE=$1
+    docker-compose -f docker-loop.yml build
+    docker-compose -f docker-loop.yml run --name ${PROJECT_NAME}_${SERVICE}_workspace -d $SERVICE
+    build "$@"
+}
+
+build() {
+    SERVICE=$1
+    docker exec -i ${PROJECT_NAME}_${SERVICE}_workspace //.ws/build
+    IMAGE=$(docker inspect -f '{{.Config.Image}}' ${PROJECT_NAME}_${SERVICE}_workspace)
+    if [ -z "$(echo $IMAGE | grep :)" ]; then
+      IMAGE=$IMAGE:latest
+    fi
+    CMD=$(docker inspect -f '{{json .Config.Cmd}}' $IMAGE)
+    # TODO: propagate command
+    docker rmi -f $IMAGE
+    docker commit \
+        -c 'ENTRYPOINT [ "/.ws/exec" ]' \
+        ${PROJECT_NAME}_${SERVICE}_workspace \
+        $IMAGE
+}
+
+run() {
+    build "$@"
+    SERVICE=$1
+    docker-compose run --service-ports --rm $SERVICE
+}
+
+end() {
+    docker-compose -f docker-loop.yml down -v
+}
+
+$ACTION "$@"

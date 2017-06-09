@@ -1,0 +1,29 @@
+version: "2"
+volumes:
+  ws:
+  vsdbg:
+services:
+  ws:
+    image: stephpr/docker-workspace
+    volumes:
+    - ws:/ws
+  vsdbg:
+    image: stephpr/vsdbg:15.1.10502.1
+    volumes:
+    - vsdbg:/vsdbg
+  my-express-app:
+    build: .
+    image: my-express-app
+    depends_on:
+    - ws
+    - vsdbg
+    volumes:
+    - ws:/mnt/ws:ro
+    - vsdbg:/mnt/tools/vsdbg:ro
+    - .:/.src
+    environment:
+      DOCKER_WS_TOOLS_SOURCE: /mnt/tools
+      DOCKER_WS_LOOP_BUILD: |-
+        npm install
+        npm --version
+    entrypoint: [ "/mnt/ws/start" ]

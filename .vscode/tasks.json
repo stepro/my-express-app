@@ -10,6 +10,7 @@
         },
         {
             "taskName": "npm run watch",
+            "dependsOn": "npm install",
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
@@ -18,6 +19,7 @@
         },
         {
             "taskName": "npm start",
+            "dependsOn": "npm install",
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
@@ -25,16 +27,18 @@
             "isBackground": true
         },
         {
-            "taskName": "docker workspace up",
-            "command": "docker-compose",
+            "taskName": "docker loop start",
+            "dependsOn": "docker loop end",
+            "command": "docker-loop",
             "suppressTaskName": true,
-            "args": [ "-p", "my-express-app_workspace", "-f", "docker-workspace.yml", "up", "--build", "-d" ]
+            "args": [ "start", "my-express-app" ]
         },
         {
-            "taskName": "docker workspace exec npm install",
-            "command": "docker",
+            "taskName": "docker workspace up",
+            "dependsOn": "docker workspace build",
+            "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "exec", "-i", "my-express-app_workspace", "npm", "install" ]
+            "args": [ "-f", "docker-workspace.yml", "run", "--name", "my-express-app_workspace", "-d", "my-express-app" ]
         },
         {
             "taskName": "docker workspace commit",
@@ -77,22 +81,16 @@
             }
         },
         {
-            "taskName": "docker rmi",
-            "dependsOn": "docker rm",
-            "isShellCommand": true,
-            "command": "docker",
-            "suppressTaskName": true,
-            "args": [ "rmi", "my-express-app" ],
-            "osx": {
-                "args": [ "||", "true" ]
-            }
-        },
-        {
-            "taskName": "docker workspace down",
-            "dependsOn": "docker rm",
+            "taskName": "docker down",
             "command": "docker-compose",
             "suppressTaskName": true,
-            "args": [ "-p", "my-express-app_workspace", "-f", "docker-workspace.yml", "down", "-v" ]
+            "args": [ "down", "-v" ]
+        },
+        {
+            "taskName": "docker loop end",
+            "command": "docker-loop.cmd",
+            "suppressTaskName": true,
+            "args": [ "end" ]
         }
     ]
 }

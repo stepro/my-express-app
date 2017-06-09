@@ -18,16 +18,6 @@
     "watch": "nodemon ./bin/www",
     "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
     "remote-debug": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
-    "start": "node ./bin/www",
-    "docker-workspace-up": "docker-compose -p my-express-app_workspace -f docker-workspace.yml up --build -d",
-    "docker-workspace-exec": "docker exec -i my-express-app_workspace",
-    "predocker-workspace-run": "docker commit -c \"ENTRYPOINT [\\\"/sync/exec\\\"]\" my-express-app_workspace my-express-app",
-    "docker-workspace-run": "docker-compose run --name my-express-app --service-ports --rm my-express-app npm run",
-    "predocker-run": "docker-compose build",
-    "docker-run": "docker-compose run --name my-express-app --service-ports --rm my-express-app",
-    "docker-rm": "docker rm -f my-express-app",
-    "docker-rmi": "docker rmi my-express-app",
-    "predocker-workspace-down": "docker rm -f my-express-app",
-    "docker-workspace-down": "docker-compose -p my-express-app_workspace -f docker-workspace.yml down -v"
+    "start": "node ./bin/www"
   }
 }

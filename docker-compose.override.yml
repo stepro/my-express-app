@@ -7,3 +7,4 @@ services:
     - "5858:5858"
     volumes:
     - .:/.src
+    command: [ "npm", "run", "watch" ]
