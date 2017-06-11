@@ -6,24 +6,29 @@
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "install" ]
+            "args": [
+                "install"
+            ]
         },
         {
             "taskName": "npm run watch",
-            "dependsOn": "npm install",
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "run", "watch" ],
+            "args": [
+                "run",
+                "watch"
+            ],
             "isBackground": true
         },
         {
             "taskName": "npm start",
-            "dependsOn": "npm install",
             "isShellCommand": true,
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "start" ],
+            "args": [
+                "start"
+            ],
             "isBackground": true
         }
     ]
