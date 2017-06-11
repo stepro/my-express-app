@@ -2,6 +2,11 @@ version: "2"
 services:
   my-express-app:
     build: .
+    image: my-express-app:develop
+    labels:
+      com.docker.loop.image-extensions: |-
+        COPY --from=stephpr/vsdbg:15.1.10502.1 /vsdbg /vsdbg
+      com.docker.loop.build: npm install
     ports:
     - "3000:3000"
     - "5858:5858"

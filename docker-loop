@@ -9,14 +9,63 @@ ME=$(which "$ME")
 
 MY_DIR=$(dirname "$ME")
 PROJECT_NAME=$(basename $MY_DIR)
+
 ACTION=$1
 shift
 
+_workspace() {
+    IMAGE=$1
+    CONTAINER=$2
+
+    echo FROM $IMAGE
+
+    echo COPY --from=stephpr/docker-workspace /ws /.ws
+
+    echo RUN echo \'#!/bin/sh\' \> /.ws/build \\
+    BUILD=$(docker inspect -f '{{index .Config.Labels "com.docker.loop.build"}}' $CONTAINER)
+    if [ -n "$BUILD" ]; then
+cat << EOF | sed "s/'/'\\\''/g" | sed "s/.*/ \&\& echo '\0' >> \/.ws\/build \\\\ /"
+$BUILD
+EOF
+    fi
+    echo " &&" chmod +x /.ws/build
+
+    ENTRYPOINT=$(docker inspect -f '{{range .Config.Entrypoint}},{{json .}}{{end}}' $IMAGE)
+    echo ENTRYPOINT [\"/.ws/start\"$ENTRYPOINT]
+
+    CMD=$(docker inspect -f '{{json .Config.Cmd}}' $IMAGE)
+    if [ "$CMD" != "null" ]; then
+        echo CMD $CMD
+    fi
+}
+
 start() {
     SERVICE=$1
-    docker-compose -f docker-loop.yml build
-    docker-compose -f docker-loop.yml run --name ${PROJECT_NAME}_${SERVICE}_workspace -d $SERVICE
-    build "$@"
+
+    docker-compose rm -f $SERVICE
+    docker-compose create --build $SERVICE
+    CONTAINER=$(docker-compose ps -q $SERVICE)
+    IMAGE=$(docker inspect -f '{{.Config.Image}}' $CONTAINER)
+    if [ -z "$(echo $IMAGE | grep :)" ]; then
+      IMAGE=$IMAGE:latest
+    fi
+
+    EXTENSIONS=$(docker inspect -f '{{index .Config.Labels "com.docker.loop.image-extensions"}}' $CONTAINER)
+    if [ -n "$EXTENSIONS" ]; then
+cat << EOF | docker build -t $IMAGE -
+FROM $IMAGE
+$EXTENSIONS
+EOF
+    fi
+    
+    _workspace $IMAGE $CONTAINER | docker build -t $IMAGE -
+
+    docker-compose rm -f $SERVICE
+
+    # Can't pass volume map on windows due to MSYS path translation
+    docker-compose run --name ${PROJECT_NAME}_${SERVICE}_loop -d $SERVICE
+
+    # build "$@"
 }
 
 build() {
