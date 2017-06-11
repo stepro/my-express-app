@@ -1,0 +1,16 @@
+version: "2"
+volumes:
+  docker-sync:
+services:
+  docker-sync:
+    image: stephpr/docker-sync
+    volumes:
+    - docker-sync:/sync
+  my-express-app:
+    depends_on:
+    - docker-sync
+    volumes:
+    - docker-sync:/.sync:ro
+    - .:/.src
+    entrypoint: [ "/.sync/exec" ]
+    command: [ "npm", "start" ]

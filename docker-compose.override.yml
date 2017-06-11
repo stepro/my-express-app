@@ -1,18 +1,8 @@
 version: "2"
-volumes:
-  dcsync:
-    external:
-      name: myexpressapp_dcsync
 services:
   my-express-app:
     build: .
-    volumes:
-    - dcsync:/dcsync:ro
-    - .:/.src
     ports:
     - "3000:3000"
     - "5858:5858"
-    environment:
-      DCSYNC_TARGET: /app
-    entrypoint: /dcsync/exec
-    command: npm start
+    command: [ "npm", "run", "watch" ]

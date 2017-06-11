@@ -3,66 +3,37 @@
     "tasks": [
         {
             "taskName": "npm install",
+            "suppressTaskName": true,
             "isShellCommand": true,
             "command": "npm",
-            "suppressTaskName": true,
             "args": [ "install" ]
         },
         {
             "taskName": "npm run watch",
-            "dependsOn": "npm install",
+            "suppressTaskName": true,
             "isShellCommand": true,
             "command": "npm",
-            "suppressTaskName": true,
             "args": [ "run", "watch" ],
             "isBackground": true
         },
         {
-            "taskName": "npm start",
-            "dependsOn": "npm install",
-            "isShellCommand": true,
-            "command": "npm",
+            "taskName": "docker-compose build",
+            "dependsOn": "docker-compose down",
             "suppressTaskName": true,
-            "args": [ "start" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "docker init",
-            "isShellCommand": true,
-            "command": "npm",
-            "suppressTaskName": true,
-            "args": [ "run", "docker-init" ]
-        },
-        {
-            "taskName": "docker build",
-            "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
-            "suppressTaskName": true,
-            "args": [ "run", "predocker" ]
-        },
-        {
-            "taskName": "docker run watch",
-            "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
-            "suppressTaskName": true,
-            "args": [ "run", "docker", "watch" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "docker run",
-            "dependsOn": "docker down",
-            "isShellCommand": true,
-            "command": "npm",
-            "suppressTaskName": true,
-            "args": [ "run", "docker", "start" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "docker down",
             "command": "docker-compose",
+            "args": [ "build" ]
+        },
+        {
+            "taskName": "docker-compose up",
             "suppressTaskName": true,
+            "command": "docker-compose",
+            "args": [ "up", "--build" ],
+            "isBackground": true
+        },
+        {
+            "taskName": "docker-compose down",
+            "suppressTaskName": true,
+            "command": "docker-compose",
             "args": [ "down" ]
         }
     ]
