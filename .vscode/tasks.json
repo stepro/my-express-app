@@ -17,10 +17,10 @@
             "isBackground": true
         },
         {
-            "taskName": "azp up npm run watch",
+            "taskName": "azp up",
             "suppressTaskName": true,
             "command": "azp",
-            "args": [ "up", "npm", "run", "watch" ],
+            "args": [ "up" ],
             "isBackground": true
         }
     ]
