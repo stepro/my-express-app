@@ -6,5 +6,5 @@
 docker-compose.yml
 docker-compose.*.yml
 Dockerfile
-npm-debug.log
 node_modules
+npm-debug.log
