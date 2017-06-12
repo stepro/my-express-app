@@ -3,41 +3,24 @@
     "tasks": [
         {
             "taskName": "npm install",
+            "suppressTaskName": true,
             "isShellCommand": true,
             "command": "npm",
-            "suppressTaskName": true,
             "args": [ "install" ]
         },
         {
             "taskName": "npm run watch",
-            "dependsOn": "npm install",
+            "suppressTaskName": true,
             "isShellCommand": true,
             "command": "npm",
-            "suppressTaskName": true,
             "args": [ "run", "watch" ],
             "isBackground": true
         },
         {
-            "taskName": "npm start",
-            "dependsOn": "npm install",
-            "isShellCommand": true,
-            "command": "npm",
+            "taskName": "azp up npm run watch",
             "suppressTaskName": true,
-            "args": [ "start" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "azp up watch",
             "command": "azp",
-            "suppressTaskName": true,
             "args": [ "up", "npm", "run", "watch" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "azp up",
-            "command": "azp",
-            "suppressTaskName": true,
-            "args": [ "up" ],
             "isBackground": true
         }
     ]

@@ -5,7 +5,6 @@
             "name": "Node.js launch",
             "type": "node",
             "request": "launch",
-            "preLaunchTask": "npm install",
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "npm",
             "windows": {
