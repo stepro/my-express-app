@@ -2,32 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Node.js launch",
+            "name": "Node.js attach",
             "type": "node",
-            "request": "launch",
-            "preLaunchTask": "npm install",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [ "run", "debug" ],
-            "port": 5858
+            "request": "attach",
+            "port": 5858,
+            "restart": true
         },
         {
-            "name": "Node.js launch (Docker)",
+            "name": "Node.js attach (Docker)",
             "type": "node",
-            "request": "launch",
-            "preLaunchTask": "docker build",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [ "run", "docker-debug" ],
+            "request": "attach",
             "port": 5858,
             "localRoot": "${workspaceRoot}",
-            "remoteRoot": "/app"
+            "remoteRoot": "/app/src"
         }
     ]
 }

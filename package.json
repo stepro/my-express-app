@@ -16,13 +16,8 @@
   },
   "scripts": {
     "watch": "nodemon ./bin/www",
-    "debug": "node --debug=5858 --debug-brk --nolazy ./bin/www",
-    "remote-debug": "node --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
-    "start": "node ./bin/www",
-    "docker-init": "docker run -v myexpressapp_dcsync:/dcsync --rm stephpr/dcsync",
-    "predocker": "docker build -t my-express-app .",
-    "docker": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -v \"$(pwd):/.src\" -p 3000:3000 -e DCSYNC_TARGET=/app -it --rm my-express-app /dcsync/exec npm run",
-    "docker-debug": "docker run --name my-express-app -v myexpressapp_dcsync:/dcsync -v \"$(pwd):/.src\" -p 3000:3000 -p 5858:5858 -e DCSYNC_TARGET=/app --rm my-express-app /dcsync/exec npm run remote-debug",
-    "docker-rm": "docker rm -f my-express-app"
+    "debug": "nodemon --debug=5858 --debug-brk --nolazy ./bin/www",
+    "remote-debug": "nodemon --debug=0.0.0.0:5858 --debug-brk --nolazy ./bin/www",
+    "start": "node ./bin/www"
   }
 }

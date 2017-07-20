@@ -3,71 +3,148 @@
     "tasks": [
         {
             "taskName": "npm install",
-            "isShellCommand": true,
+            "type": "shell",
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "install" ]
+            "args": [
+                "install"
+            ],
+            "problemMatcher": []
         },
         {
             "taskName": "npm run watch",
-            "dependsOn": "npm install",
-            "isShellCommand": true,
+            "type": "shell",
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "run", "watch" ],
-            "isBackground": true
+            "args": [
+                "run",
+                "watch"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "taskName": "npm run debug",
+            "type": "shell",
+            "command": "npm",
+            "suppressTaskName": true,
+            "args": [
+                "run",
+                "debug"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         },
         {
             "taskName": "npm start",
-            "dependsOn": "npm install",
-            "isShellCommand": true,
+            "type": "shell",
             "command": "npm",
             "suppressTaskName": true,
-            "args": [ "start" ],
-            "isBackground": true
-        },
-        {
-            "taskName": "docker init",
-            "isShellCommand": true,
-            "command": "npm",
-            "suppressTaskName": true,
-            "args": [ "run", "docker-init" ]
+            "args": [
+                "start"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         },
         {
             "taskName": "docker build",
             "dependsOn": "docker rm",
-            "isShellCommand": true,
-            "command": "npm",
+            "command": "docker",
             "suppressTaskName": true,
-            "args": [ "run", "predocker" ]
+            "args": [
+                "build",
+                "-t",
+                "my-express-app",
+                "."
+            ],
+            "problemMatcher": []
         },
         {
             "taskName": "docker run watch",
-            "dependsOn": "docker rm",
-            "isShellCommand": true,
-            "command": "npm",
+            "dependsOn": "docker build",
+            "command": "docker",
             "suppressTaskName": true,
-            "args": [ "run", "docker", "watch" ],
-            "isBackground": true
+            "args": [
+                "run",
+                "--name",
+                "my-express-app",
+                "-v",
+                "${workspaceRoot}:/app/src",
+                "-p",
+                "3000:3000",
+                "-it",
+                "--rm",
+                "my-express-app",
+                "npm",
+                "run",
+                "watch"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "taskName": "docker run debug",
+            "dependsOn": "docker build",
+            "command": "docker",
+            "suppressTaskName": true,
+            "args": [
+                "run",
+                "--name",
+                "my-express-app",
+                "-v",
+                "${workspaceRoot}:/app/src",
+                "-p",
+                "3000:3000",
+                "-p",
+                "5858:5858",
+                "-it",
+                "--rm",
+                "my-express-app",
+                "npm",
+                "run",
+                "remote-debug"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         },
         {
             "taskName": "docker run",
-            "dependsOn": "docker rm",
-            "isShellCommand": true,
-            "command": "npm",
+            "dependsOn": "docker build",
+            "command": "docker",
             "suppressTaskName": true,
-            "args": [ "run", "docker", "start" ],
-            "isBackground": true
+            "args": [
+                "run",
+                "--name",
+                "my-express-app",
+                "-v",
+                "${workspaceRoot}:/app/src",
+                "-p",
+                "3000:3000",
+                "-it",
+                "--rm",
+                "my-express-app"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         },
         {
             "taskName": "docker rm",
-            "isShellCommand": true,
+            "type": "shell",
             "command": "docker",
             "suppressTaskName": true,
-            "args": [ "rm", "-f", "my-express-app" ],
+            "args": [
+                "rm",
+                "-f",
+                "my-express-app"
+            ],
             "osx": {
-                "args": [ "||", "echo", "-n" ]
-            }
+                "args": [
+                    "||",
+                    "echo",
+                    "-n"
+                ]
+            },
+            "problemMatcher": []
         }
     ]
 }
