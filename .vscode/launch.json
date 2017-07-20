@@ -14,7 +14,8 @@
             "request": "attach",
             "port": 5858,
             "localRoot": "${workspaceRoot}",
-            "remoteRoot": "/app/src"
+            "remoteRoot": "/app/src",
+            "restart": true
         }
     ]
 }
