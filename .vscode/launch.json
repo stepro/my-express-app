@@ -2,28 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Node.js launch",
+            "name": "Node.js attach",
             "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [ "run", "debug" ],
-            "port": 5858
+            "request": "attach",
+            "port": 5858,
+            "restart": true
         },
         {
-            "name": "Node.js launch (Azure)",
+            "name": "Node.js attach (VSC)",
             "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "runtimeExecutable": "azp",
-            "runtimeArgs": [ "up", "-p", "5858:5858", "npm", "run", "remote-debug" ],
-            "timeout": 60000,
+            "request": "attach",
             "port": 5858,
             "localRoot": "${workspaceRoot}",
-            "remoteRoot": "/app"
+            "remoteRoot": "/app",
+            "restart": true
         }
     ]
 }

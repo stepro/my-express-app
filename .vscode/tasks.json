@@ -3,25 +3,41 @@
     "tasks": [
         {
             "taskName": "npm install",
+            "type": "shell",
             "suppressTaskName": true,
-            "isShellCommand": true,
             "command": "npm",
-            "args": [ "install" ]
+            "args": [
+                "install"
+            ],
+            "problemMatcher": []
         },
         {
-            "taskName": "npm run watch",
+            "taskName": "npm run debug",
+            "type": "shell",
             "suppressTaskName": true,
-            "isShellCommand": true,
             "command": "npm",
-            "args": [ "run", "watch" ],
-            "isBackground": true
+            "args": [
+                "run",
+                "debug"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         },
         {
-            "taskName": "azp up",
+            "taskName": "vsc up",
             "suppressTaskName": true,
-            "command": "azp",
-            "args": [ "up" ],
-            "isBackground": true
+            "command": "vsc",
+            "args": [
+                "up",
+                "-p",
+                "5858:5858",
+                "--",
+                "npm",
+                "run",
+                "remote-debug"
+            ],
+            "isBackground": true,
+            "problemMatcher": []
         }
     ]
 }
