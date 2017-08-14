@@ -5,14 +5,14 @@
             "name": "Node.js attach",
             "type": "node",
             "request": "attach",
-            "port": 5858,
+            "port": 9229,
             "restart": true
         },
         {
             "name": "Node.js attach (VSC)",
             "type": "node",
             "request": "attach",
-            "port": 5858,
+            "port": 9229,
             "localRoot": "${workspaceRoot}",
             "remoteRoot": "/app",
             "restart": true

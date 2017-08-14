@@ -16,8 +16,8 @@
   },
   "scripts": {
     "watch": "nodemon ./bin/www",
-    "debug": "nodemon --debug=5858 --nolazy ./bin/www",
-    "remote-debug": "nodemon --debug=0.0.0.0:5858 --nolazy ./bin/www",
+    "debug": "nodemon --inspect --nolazy ./bin/www",
+    "remote-debug": "nodemon --inspect=0.0.0.0:9229 --nolazy ./bin/www",
     "start": "node ./bin/www"
   }
 }

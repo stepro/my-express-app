@@ -2,36 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "npm install",
-            "type": "shell",
-            "suppressTaskName": true,
-            "command": "npm",
-            "args": [
-                "install"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "taskName": "npm run debug",
-            "type": "shell",
-            "suppressTaskName": true,
-            "command": "npm",
-            "args": [
-                "run",
-                "debug"
-            ],
-            "isBackground": true,
-            "problemMatcher": []
-        },
-        {
             "taskName": "vsc up",
-            "suppressTaskName": true,
             "command": "vsc",
             "args": [
                 "up",
                 "-p",
-                "5858:5858",
-                "--",
+                "9229:9229",
                 "npm",
                 "run",
                 "remote-debug"
