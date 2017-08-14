@@ -4,6 +4,9 @@
         {
             "taskName": "vsc up",
             "command": "vsc",
+            "windows": {
+                "command": "vsc.cmd"
+            },
             "args": [
                 "up",
                 "-p",
