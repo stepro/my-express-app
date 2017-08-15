@@ -2,6 +2,16 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "type": "npm",
+            "script": "install",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "debug",
+            "problemMatcher": []
+        },
+        {
             "taskName": "vsc up",
             "command": "vsc",
             "windows": {
