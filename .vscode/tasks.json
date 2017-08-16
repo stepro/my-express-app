@@ -18,12 +18,7 @@
                 "command": "vsc.cmd"
             },
             "args": [
-                "up",
-                "-p",
-                "9229:9229",
-                "npm",
-                "run",
-                "remote-debug"
+                "up"
             ],
             "isBackground": true,
             "problemMatcher": []
