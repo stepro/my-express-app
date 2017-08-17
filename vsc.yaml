@@ -1,5 +1,6 @@
-name: my-express-app
-configurations:
+metadata:
+  name: my-express-app
+config:
   develop:
     command: ["npm", "run", "watch"]
     watch:
