@@ -1,0 +1,13 @@
+name: my-express-app
+configurations:
+  develop:
+    command: ["npm", "run", "watch"]
+    watch:
+      package.json:
+        action: restart
+  develop.vscode:
+    ports:
+      debugger: 9229:9229
+    command: ["npm", "run", "vsc-debug"]
+  production:
+    sync: false
