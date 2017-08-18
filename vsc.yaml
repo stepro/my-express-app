@@ -1,10 +1,9 @@
-metadata:
-  name: my-express-app
-  version: 1.0.0
-  language: node
-spec:
+name: my-express-app
+version: 1.0.0
+language: node
+properties:
   public: true
-config:
+configurations:
   develop:
     command: ["npm", "run", "watch"]
     public: false
