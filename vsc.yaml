@@ -1,9 +1,14 @@
+kind: service
 metadata:
   name: my-express-app
+  version: 1.0.0
   language: node
+spec:
+  public: true
 config:
   develop:
     command: ["npm", "run", "watch"]
+    public: false
     watch:
       package.json:
         action: restart
@@ -11,5 +16,5 @@ config:
     ports:
       debugger: 9229:9229
     command: ["npm", "run", "vsc-debug"]
-  production:
+  release:
     sync: false
