@@ -17,7 +17,7 @@
   "scripts": {
     "watch": "nodemon ./bin/www",
     "debug": "nodemon --inspect --nolazy ./bin/www",
-    "vsc-debug": "nodemon --inspect=0.0.0.0:9229 --nolazy ./bin/www",
+    "vsce-debug": "nodemon --inspect=0.0.0.0:9229 --nolazy ./bin/www",
     "start": "node ./bin/www"
   }
 }

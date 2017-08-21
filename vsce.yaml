@@ -13,6 +13,6 @@ configurations:
   develop.vscode:
     ports:
       debugger: 9229:9229
-    command: ["npm", "run", "vsc-debug"]
+    command: ["npm", "run", "vsce-debug"]
   release:
     sync: false
