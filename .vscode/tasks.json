@@ -12,12 +12,14 @@
             "problemMatcher": []
         },
         {
-            "taskName": "vsc up",
-            "command": "vsc",
+            "taskName": "vsce up",
+            "command": "vsce",
             "windows": {
-                "command": "vsc.cmd"
+                "command": "vsce.cmd"
             },
             "args": [
+                "-c",
+                "develop.vscode",
                 "up"
             ],
             "isBackground": true,
