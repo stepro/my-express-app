@@ -5,7 +5,7 @@ properties:
   public: true
 configurations:
   develop:
-    command: ["npm", "run", "watch"]
+    command: ["npm", "run", "develop"]
     public: false
     watch:
       package.json:
@@ -13,6 +13,6 @@ configurations:
   develop.vscode:
     ports:
       debugger: 9229:9229
-    command: ["npm", "run", "vsce-debug"]
+    command: ["npm", "run", "vsce-develop"]
   release:
     sync: false
