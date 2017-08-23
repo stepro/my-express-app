@@ -12,7 +12,7 @@
             "problemMatcher": []
         },
         {
-            "taskName": "npm: debug (VSCE)",
+            "taskName": "vsce: up",
             "command": "vsce",
             "windows": {
                 "command": "vsce.cmd"
