@@ -12,14 +12,14 @@
             "problemMatcher": []
         },
         {
-            "taskName": "vsce up",
+            "taskName": "npm: debug (VSCE)",
             "command": "vsce",
             "windows": {
                 "command": "vsce.cmd"
             },
             "args": [
                 "-c",
-                "develop.vscode",
+                "develop.debug.vscode",
                 "up"
             ],
             "isBackground": true,

@@ -1,18 +1,17 @@
 name: my-express-app
-version: 1.0.0
 language: node
 properties:
   public: true
 configurations:
   develop:
-    command: ["npm", "run", "develop"]
+    command: ["npm", "run", "watch"]
     public: false
     watch:
       package.json:
         action: restart
-  develop.vscode:
+  develop.debug:
     ports:
-      debugger: 9229:9229
-    command: ["npm", "run", "vsce-develop"]
+      debug: 9229:9229
+    command: ["npm", "run", "debug", "--", "--inspect=0.0.0.0:9229"]
   release:
     sync: false
