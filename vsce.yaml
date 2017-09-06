@@ -8,7 +8,7 @@ configurations:
     public: false
     watch:
       package.json:
-        action: restart
+        action: rebuild
   develop.debug:
     ports:
       debug: 9229:9229
