@@ -6,4 +6,4 @@
 Dockerfile
 node_modules
 npm-debug.log
-vsce.yaml
+vscc.yaml

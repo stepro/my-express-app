@@ -9,7 +9,7 @@
             "restart": true
         },
         {
-            "name": "Node.js attach (VSCE)",
+            "name": "Node.js attach (VSCC)",
             "type": "node",
             "request": "attach",
             "port": 9229,
