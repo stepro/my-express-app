@@ -1,5 +1,4 @@
 name: my-express-app
-language: node
 properties:
   public: true
 configurations:
